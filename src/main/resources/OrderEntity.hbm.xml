@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="hibernate.Pojo.OrderEntity" table="order" schema="orders">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="customer">
+            <column name="customer" sql-type="varchar(200)" length="200"/>
+        </property>
+        <property name="adress">
+            <column name="adress" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="summ">
+            <column name="summ" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

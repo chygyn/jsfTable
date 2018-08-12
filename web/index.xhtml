@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsf/core">
+<f:view>
+    <h:head>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2">
+            <h:form>
+                <h:outputText value="#{ordersController.curDate}"/>
+                <h:commandButton action="#{ordersController.getCurentDate}" value="Change date"/>
+                <h:dataTable value="#{ordersController.orders}" binding="#{ordersController.htmlDT}" var="order"
+                             border="2" cellpadding="1" cellspacing="1" styleClass="table"
+                             >
+                    <h:column>
+                        <c:facet name="header">Номер заказа</c:facet>
+                        #{order.id}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Имя заказчика</c:facet>
+                        #{order.customer}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Адрес заказчика</c:facet>
+                        #{order.adress}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Сумма заказа</c:facet>
+                        #{order.summ}
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="pushMe" action="#{ordersController.getGoodByID}"/>
+                    </h:column>
+
+                    <!--<h:column>
+                        <c:facet name="header">Дата</c:facet>
+                        #{order.date}
+                    </h:column>-->
+                </h:dataTable>
+                <h:dataTable value="#{ordersController.goods}" var="good"
+                             border="2" cellpadding="1" cellspacing="1">
+                    <h:column>
+                        <c:facet name="header">Номер</c:facet>
+                        #{good.id}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Название</c:facet>
+                        #{good.name}
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Количество</c:facet>
+                        #{good.count}
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </h:panelGrid>
+    </h:body>
+</f:view>
+
+</html>
